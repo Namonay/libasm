@@ -1,8 +1,8 @@
-global _write
+global _read
 extern __errno_location
 
-_write:
-	mov eax, 0x1
+_read:
+	mov eax, 0x11
 	syscall
 	test rax, rax
 	js .error
