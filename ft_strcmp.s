@@ -1,9 +1,10 @@
-extern _strcmp
+global ft_strcmp
+extern _malloc
 
-
-_strcmp:
+ft_strcmp:
 	xor rax, rax
 	xor rbx, rbx
+
 .count:
 	mov rax, [rdi + rbx]
 	sub rax, [rsi + rbx]

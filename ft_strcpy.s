@@ -1,10 +1,10 @@
-extern _strcpy
+global ft_strcpy
 
-_strcpy:
+ft_strcpy:
 	xor rbx, rbx
 
 .cpy:
-	cmp dword [rsi + rbx], 0
+	cmp byte [rsi + rbx], 0
 	je .end
 	mov rax, [rsi + rbx]
 	mov [rdi + rbx], rax
@@ -12,5 +12,6 @@ _strcpy:
 	jmp .cpy
 
 .end:
+	mov byte [rdi + rbx], 0
 	mov rax, rdi
 	ret

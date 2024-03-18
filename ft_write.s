@@ -1,7 +1,7 @@
-global _write
+global ft_write
 extern __errno_location
 
-_write:
+ft_write:
 	mov eax, 0x1
 	syscall
 	test rax, rax

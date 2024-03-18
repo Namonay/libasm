@@ -1,7 +1,7 @@
-global _read
+global ft_read
 extern __errno_location
 
-_read:
+ft_read:
 	mov eax, 0x11
 	syscall
 	test rax, rax

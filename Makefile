@@ -17,7 +17,8 @@ SRCS = ft_strlen.s \
 		ft_read.s    \
 		ft_strcpy.s   \
 		ft_strcmp.s    \
-		
+		ft_strdup.s     \
+
 OBJS = ${SRCS:.s=.o}
 
 CC = nasm
