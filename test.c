@@ -21,9 +21,11 @@ extern char *ft_strdup(const char *s);
 void Test_read(char *filename, int len)
 {
     char buffer[100] = {0};
+    int errnosave;
 
     int fd = open(filename, O_RDONLY);
     printf("READ : %ld | ", read(fd, buffer, len));
+    errnosave = errno;
     printf("%s\n", buffer);
     close(fd);
     bzero(buffer, len);
@@ -32,6 +34,7 @@ void Test_read(char *filename, int len)
     printf("READ : %ld | ", ft_read(fd, buffer, len));
     printf("%s\n", buffer);
     close(fd);
+    printf("READ : %s\n", (errnosave == errno) ? "OK" : "KO");
 }
 
 void Test_write(char *buffer, int len)
@@ -47,7 +50,7 @@ void Test_strdup(char *buffer)
     newbuffer = strdup(buffer);
     printf("STRDUP : %s\n", newbuffer);
     free(newbuffer);
-
+    
     newbuffer = ft_strdup(buffer);
     printf("FT_STRDUP : %s\n", newbuffer);
     free(newbuffer);
@@ -90,7 +93,7 @@ int main()
 
     Test_strlen("clafete");
 
-    Test_read("mauvaisdavid.txt", 15);
+    Test_read("mauvaisdavid.txt", 3);
 
     Test_write("youpipouic", 10);
 
@@ -98,5 +101,5 @@ int main()
 
     Test_strdup("youpilolololol");
 
-    Test_strcmp("vilain", "vilain");
+    Test_strcmp(buffer, "123");
 }

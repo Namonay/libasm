@@ -1,17 +1,27 @@
 global ft_strcmp
-extern _malloc
 
 ft_strcmp:
+	xor r8, r8
 	xor rax, rax
-	xor rbx, rbx
 
 .count:
-	mov rax, [rdi + rbx]
-	sub rax, [rsi + rbx]
-	cmp rax, 0
+	mov al, BYTE [rdi + r8]
+	mov dl, BYTE [rsi + r8]
+	test al, al
+	jz .end
+	test dl, dl
+	jz .end
+	cmp al, dl
 	jne .end
-	inc rbx
+	inc r8
 	jmp .count
 
 .end: 
+	sub al, dl
+	js .neg
+	ret
+
+.neg:
+	neg al
+	neg rax
 	ret

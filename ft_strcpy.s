@@ -1,17 +1,17 @@
 global ft_strcpy
 
 ft_strcpy:
-	xor rbx, rbx
+	xor rdx, rdx
 
 .cpy:
-	cmp byte [rsi + rbx], 0
+	cmp byte [rsi + rdx], 0
 	je .end
-	mov rax, [rsi + rbx]
-	mov [rdi + rbx], rax
-	inc rbx
+	mov rax, [rsi + rdx]
+	mov [rdi + rdx], rax
+	inc rdx
 	jmp .cpy
 
 .end:
-	mov byte [rdi + rbx], 0
+	mov byte [rdi + rdx], 0
 	mov rax, rdi
 	ret

@@ -3,23 +3,21 @@ global ft_strdup
 extern ft_strlen
 extern ft_strcpy
 extern malloc
-extern __errno_location
 
 ft_strdup:
-    cmp rdi, 0
-    je .end
-    mov r12, rdi
     call ft_strlen
     inc rax
-    mov rdi, rax
+    push rdi
+    mov rdi, rax  ; move the result of strlen in rdi
     call malloc wrt ..plt
     test rax, rax
     je .end
-    mov rdi, rax
-    mov rsi, r12
+    pop r8
+    mov rdi, rax   ; move the result of malloc into rdi (override strlen result)
+    mov rsi, r8    ; move the argument of strdup in rsi
     call ft_strcpy
     ret
 
 .end:
-    xor rax, rax
+    pop r8
     ret
