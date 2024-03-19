@@ -12,11 +12,10 @@ ft_strdup:
     call malloc wrt ..plt
     test rax, rax
     je .end
-    pop r8
+    pop rsi
     mov rdi, rax   ; move the result of malloc into rdi (override strlen result)
-    mov rsi, r8    ; move the argument of strdup in rsi
     call ft_strcpy
-    ret
+    ret 
 
 .end:
     pop r8
