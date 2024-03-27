@@ -4,11 +4,11 @@ ft_strcpy:
 	xor rdx, rdx
 
 .cpy:
-	cmp byte [rsi + rdx], 0
+	cmp byte [rsi + rdx], 0 ; if src is empty
 	je .end
-	mov rax, [rsi + rdx]
-	mov [rdi + rdx], rax
-	inc rdx
+	mov rax, [rsi + rdx] ; move src[rdx] to rax
+	mov word [rdi + rdx], ax ; dest[rdx] = src[rdx]
+	inc rdx				 ; rdx++
 	jmp .cpy
 
 .end:
