@@ -6,7 +6,7 @@
 #    By: vvaas <vvaas@student.42angouleme.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 14:16:21 by vvaas             #+#    #+#              #
-#    Updated: 2024/03/27 17:45:37 by vvaas            ###   ########.fr        #
+#    Updated: 2024/05/23 14:42:18 by vvaas            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,12 +30,15 @@ AR = ar
 ARFLAG = rc
 
 .s.o :
-	${CC} $< -o ${<:.s=.o} ${FLAGS}
+	@printf "\e[1;32m[compiling {"$(CC)"}...]\e[1;00m "$<"\n"
+	@${CC} $< -o ${<:.s=.o} ${FLAGS}
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${AR} ${ARFLAGS} ${NAME} ${OBJS}
+	@printf "\e[1;32m[linking {"$(CC)"}...]\e[1;00m "$@"\n"
+	@${AR} ${ARFLAGS} ${NAME} ${OBJS}
+	@printf "\e[1;32m[build finished]\e[1;00m\n"
 
 clean:
 	rm -f ${OBJS}

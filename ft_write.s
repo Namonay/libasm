@@ -2,16 +2,16 @@ global ft_write
 extern __errno_location
 
 ft_write:
-	cmp rsi, 0
-	je .bad_buff
+	cmp rsi, 0 ; if buffer is null
+	je .bad_buff ; goto bad_buff
 	mov eax, 0x1 ; put the syscall number of write
-	syscall
+	syscall      ; call write
 	test rax, rax ; test if the syscall failed
 	js .error
 	ret
 
 .bad_buff:
-	mov rdx, 22
+	mov rdx, 22 ; put the corresponding errno code
 	call __errno_location wrt ..plt
 	mov [rax], rdx
 	mov rax, -1

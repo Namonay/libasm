@@ -14,9 +14,9 @@ ft_strdup:
     je .end
     pop rsi        ; we take the value we saved earlier
     mov rdi, rax   ; move the result of malloc into rdi (override strlen result)
-    call ft_strcpy
-    ret 
+    call ft_strcpy ; copy the string
+    ret ; result is put into rax, return it
 
 .end:
-	pop rsi
-    ret
+	pop rsi ; remove rsi from the stack
+    ret ; return
