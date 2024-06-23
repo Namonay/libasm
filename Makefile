@@ -6,7 +6,7 @@
 #    By: vvaas <vvaas@student.42angouleme.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 14:16:21 by vvaas             #+#    #+#              #
-#    Updated: 2024/05/23 14:42:18 by vvaas            ###   ########.fr        #
+#    Updated: 2024/06/23 19:55:39 by vvaas            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -27,7 +27,7 @@ FLAGS = -f elf64
 
 AR = ar
 
-ARFLAG = rc
+ARFLAG = rcs
 
 .s.o :
 	@printf "\e[1;32m[compiling {"$(CC)"}...]\e[1;00m "$<"\n"

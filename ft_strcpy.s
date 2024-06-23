@@ -12,6 +12,6 @@ ft_strcpy:
 	jmp .cpy
 
 .end:
-	mov byte [rdi + rdx], 0
-	mov rax, rdi
-	ret
+	mov byte [rdi + rdx], 0 ; dest[rdx] = '\0'
+	mov rax, rdi ; set dest as the return value
+	ret ; return
